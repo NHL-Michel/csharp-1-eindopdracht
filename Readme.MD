@@ -92,44 +92,32 @@ In the tables below all the input (that the user has to input in order to make t
 
 In the following tables you'll find all the data that is needed for testing.
 
-#### Athlete
+#### Dish
 
 | ID            | Input                             | Code                              |
 | ------------- | --------------------------------- | --------------------------------- |
-| `athleteOne`  | firstName: Sven<br /> lastName: Kramer <br /> specialization: hardloper | `new Athlete("Sven", "Kramer", "hardloper")` |
-| `athleteTwo`  | firstName: Ireen<br /> lastName: Wust <br /> specialization: hardloper   | `new Athlete("Ireen", "Wust", "hardloper")`       |
+| `testAppetizer`  | price: 3.00f <br /> name: Tomatensoep <br /> appetizer: true <br /> mainCourse: false <br /> dessert: false | `new Dish(3.00f, "Tomatensoep", true, false, false)` |
+| `testMainCourse` | price: 5.00f <br /> name: Chateau Briand <br /> appetizer: false <br /> mainCourse: true <br /> dessert: false | `new Dish(5.00f, "Chateau Briand", false, true, false)` |
+| `testDessert`    | price: 2.00f <br /> name: Pavlova <br /> appetizer: false <br /> mainCourse: false <br /> dessert: true | `new Dish(2.00f, "Pavlova", false, false, true)` |
 
-#### Club
+#### CateringCompany
 
 | ID        | Input                                |  Code                        |
 | --------- | ------------------------------------ | -----------------------------|
-| `club`    |  name: De harde renner               | `new Club("De harde renner")`|
+| `testCateringCompany` |  name: het lauwe soepje <br /> startDate: DateTime.Now <br /> endDate: DateTime.Now.AddDays(10)| `new CateringCompany("het lauwe soepje", DateTime.Now, DateTime.Now.AddDays(10))`|
 
-#### Track
+#### Customer
 
-| ID             | Input                                |  Code                 | additional info |
-| -------------- | ------------------------------------ | --------------------  | --------------- |
-| `tempTrack`    |  name: De harde renner               | `new Track("Imola")`  | This is best done in the Athlete object which has the method addTrack() |
-| `tempTrack`    |  name: De snelle wind                | `new Track("Bahrein")`| This is best done in the Athlete object which has the method addTrack() |
+| ID             | Input                                |  Code                 | 
+| -------------- | ------------------------------------ | --------------------  | 
+| `testCustomer1`|  name: Willem Engel <br /> wallet: 54.30f | `new Customer("Willem Engel", 54.30f)`  | 
+| `testCustomer2`|  name: Frodo de 2e<br /> wallet: 24.14f   | `new Customer("Frodo de 2e", 24.14f)`   |
 
-#### Lap
-
-| ID           | Input               | Code            |additional info |
-| ------------ | ------------------- | --------------- | ---------------|
-| `tempLap`    | time: `20`     | `new Lap(15)`        | This is done inside the Track Object|
-| `tempLap`    | time: `20`     | `new Lap(17)`        | This is done inside the Track Object|
-| `tempLap`    | time: `20`     | `new Lap(20)`        | This is done inside the Track Object|
-| `tempLap`    | time: `30`     | `new Lap(30)`        | This is done inside the Track Object|
-| `tempLap`    | time: `30`     | `new Lap(35)`        | This is done inside the Track Object|
-| `tempLap`    | time: `40`     | `new Lap(40)`        | This is done inside the Track Object|
-
-#### Attach Athlete to club, attach track to athlete, attach lap to a track which is part of an athlete
-
-| Order        | Code                      | additional info |
-| ------------ | ------------------------- | --------------- |
-| `AthleteOne` | `club.addMember(Athlete athlete)` | This is done inside the Club object   |
-| `tempTrack`  | `athlete.addTrack(String name)` | This is done inside the Athlete object|
-| `tempLap`    | `athlete.getTrack(int index).AddLap(int time)` | This is done inside the track object|
+> After instantiating all objects above, set all dishes in the CateringCompany class. <br /> 
+> This way, 3 dishes will be set in the list of `availableDishes` variable <br />
+> 
+> next to setting the dishes, also add the customers `testCustomer1` and `testCustomer2` to the cateringCompany. <br />
+> In total, your `availableDishes` list should have 3 elements, and your `customers` list should have 2 elements.
 
 
 ### Test Cases
@@ -140,43 +128,3 @@ Starting from the athlete object, request the fastest lap.
 |----|-----|------|---------------|
 |1| `trackIndex int` | `athleteOne.getFastestTrack().getFastestLap()` | 15 |
 |2| `trackIndex int` | `athleteTwo.getFastestTrack().getFastestLap()` | 17 |
-#### test B
-From the athlete object, get the total time the athlete has been on a track.
-
-|Step|Input|Action|Expected output|
-|----|-----|------|---------------|
-|1| `trackIndex int` | `athleteOne.getTotalTime(0)` | 125 |
-|2| `trackIndex int` | `athleteTwo.getTotalTime(1)` | 65 |
-|3| `trackIndex int` | `athleteOne.getTotalTime(0)` | 90 |
-|4| `trackIndex int` | `athleteTwo.getTotalTime(1)` | 67 |
-
-#### test C 
-From the athlete object, get the average time per lap set on a specific track.
-
-|Step|Input|Action|Expected output|
-|----|-----|------|---------------|
-|1| `trackIndex int` | `athleteOne.getAverageTime(0)` | 31 |
-|2| `trackIndex int` | `athleteTwo.getAverageTime(0)` | 21 |
-
-#### test D
-From the athlete, get the the distance in km made on a specific track.
-
-|Step|Input|Action|Expected output|
-|----|-----|------|---------------|
-|1| `trackIndex int` | `athleteOne.getDistanceInKm(0)` | 1.6 |
-|2| `trackIndex int` | `athleteOne.getDistanceInKm(1)` | 1.2 |
-
-#### test E
-From the athlete object, get the max speed someone has set on a track (in meter per seconds)
-
-|Step|Input|Action|Expected output|
-|----|-----|------|---------------|
-|1| `trackIndex int` | `athleteOne.getMaxSpeed(0)` | 20 |
-|2| `trackIndex int` | `athleteOne.getMaxSpeed(1)` | 26 |
-#### test F
-From the club object, retrieve the fastest athlete. This is based on all tracks
-
-|Step|Input|Action|Expected output|
-|----|-----|------|---------------|
-|1| `empty` | `club.getFastestAthlete().getFirstName()` | Sven |
-|2| `empty` | `club.getFastestAthlete().getFastestTrack().getFastestLap()` | 15 |
