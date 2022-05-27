@@ -85,7 +85,7 @@ In the tables below all the input (that the user has to input in order to make t
 |Order a dish as a customer |`Dish`|orderDish()|
 ## Class Diagram
 
-![image](https://user-images.githubusercontent.com/89914058/158354399-477d03be-702f-4a48-a621-afd2dab4c512.png)
+![image](https://user-images.githubusercontent.com/89914058/170766111-42a5a505-dce0-4fd7-b865-e88c5b843f85.png)
 
 ## Testplan
 ### Test Data
