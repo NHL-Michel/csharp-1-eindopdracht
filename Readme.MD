@@ -1,4 +1,4 @@
-# Startdocument for 'The catering company (Assignment 9).'
+# Startdocument for 'The catering company (Assignment 9)'
 
 Startdocument of **Michel Disbergen**. Student number **4999738**.
 
