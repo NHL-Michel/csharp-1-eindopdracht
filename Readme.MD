@@ -127,9 +127,9 @@ Starting from the customer, order some dishes.
 
 |Step|Input|Action|Expected output|
 |----|-----|------|---------------|
-|1| name `String`, wallet `float` | `testCustomer1.orderDish("TomatenSoep", this.wallet)` | Dish (appetizer dish) |
-|2| name `String`, wallet `float` | `testCustomer1.orderDish("Pavlova", this.wallet)` | Dish (dessert dish) |
-|3| name `String`, wallet `float` | `testCustomer2.orderDish("Chateau Briand", this.wallet)` | Dish (maincourse dish) |
+|1| name `String`, wallet `float` | `testCustomer1.orderDish("TomatenSoep", testCustomer1.Wallet)` | Dish (appetizer dish) |
+|2| name `String`, wallet `float` | `testCustomer1.orderDish("Pavlova", testCustomer1.Wallet)` | Dish (dessert dish) |
+|3| name `String`, wallet `float` | `testCustomer2.orderDish("Chateau Briand", testCustomer2.Wallet)` | Dish (maincourse dish) |
 
 #### Test B
 After ordering some dishes, your wallet value should be adjusted. Check the output of your wallet.
