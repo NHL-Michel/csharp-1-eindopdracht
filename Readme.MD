@@ -113,7 +113,6 @@ In the following tables you'll find all the data that is needed for testing.
 | `testCustomer1`|  name: Willem Engel <br /> wallet: 54.30f | `new Customer("Willem Engel", 54.30f)`  | 
 | `testCustomer2`|  name: Frodo de 2e<br /> wallet: 24.14f   | `new Customer("Frodo de 2e", 24.14f)`   |
 
-> <br />
 > After instantiating all objects above, set all dishes in the CateringCompany class. <br /> 
 > This way, 3 dishes will be set in the list of `availableDishes` variable <br />
 > 
