@@ -113,18 +113,56 @@ In the following tables you'll find all the data that is needed for testing.
 | `testCustomer1`|  name: Willem Engel <br /> wallet: 54.30f | `new Customer("Willem Engel", 54.30f)`  | 
 | `testCustomer2`|  name: Frodo de 2e<br /> wallet: 24.14f   | `new Customer("Frodo de 2e", 24.14f)`   |
 
+> <br />
 > After instantiating all objects above, set all dishes in the CateringCompany class. <br /> 
 > This way, 3 dishes will be set in the list of `availableDishes` variable <br />
 > 
-> next to setting the dishes, also add the customers `testCustomer1` and `testCustomer2` to the cateringCompany. <br />
+> Next to setting the dishes, also add the customers `testCustomer1` and `testCustomer2` to the cateringCompany. <br />
 > In total, your `availableDishes` list should have 3 elements, and your `customers` list should have 2 elements.
+> <br />
 
 
 ### Test Cases
-#### test A
-Starting from the athlete object, request the fastest lap.
+#### Test A
+Starting from the customer, order some dishes.
 
 |Step|Input|Action|Expected output|
 |----|-----|------|---------------|
-|1| `trackIndex int` | `athleteOne.getFastestTrack().getFastestLap()` | 15 |
-|2| `trackIndex int` | `athleteTwo.getFastestTrack().getFastestLap()` | 17 |
+|1| name `String`, wallet `float` | `testCustomer1.orderDish("TomatenSoep", this.wallet)` | Dish (appetizer dish) |
+|2| name `String`, wallet `float` | `testCustomer1.orderDish("Pavlova", this.wallet)` | Dish (dessert dish) |
+|3| name `String`, wallet `float` | `testCustomer2.orderDish("Chateau Briand", this.wallet)` | Dish (maincourse dish) |
+
+#### Test B
+After ordering some dishes, your wallet value should be adjusted. Check the output of your wallet.
+
+|Step|Input|Action|Expected output|
+|----|-----|------|---------------|
+|1| - | `Console.WriteLine(testCustomer1.Wallet)` | 49.30 |
+|2| - | `Console.WriteLine(testCustomer2.Wallet)` | 19.14 |
+
+#### Test C
+From the catering company, calculate the total revenue made
+|Step|Input|Action|Expected output|
+|----|-----|------|---------------|
+|1| - | `Console.WriteLine(testCateringCompany.calculateRevenue())` | 10.00 |
+
+#### Test D
+From the catering company, get the biggest consumer (customer that has had the most dishes)
+|Step|Input|Action|Expected output|
+|----|-----|------|---------------|
+|1| - | `testCateringCompany.getBiggestConsumer()` | Customer (`testCustomer1`) |
+
+#### Test E
+From the catering company, check how many dishes are still available in the `availableDishes` list. This should be 0 <br />
+since all dishes were ordered.
+|Step|Input|Action|Expected output|
+|----|-----|------|---------------|
+|1| - | `Console.WriteLine(testCateringCompany.AvailableDishes.Count());` | 0 |
+
+#### Test F
+From the catering company, in the customers list, checkout how many dishes customer 1 has purchased. <br />
+The first customer in this list should be testCustomer1.
+
+|Step|Input|Action|Expected output|
+|----|-----|------|---------------|
+|1| - | `Console.WriteLine(testCateringCompany.customers[0].OrderedDishes.Count());` | 2 |
