@@ -102,12 +102,12 @@ In the tables below all the input (that the user has to input in order to make t
 ## Testplan
 ### Customer 
 #### Ordering a dish
-|Customer |Dish name| Cash | Date | Cash after ordering |
+| Customer | Dish name| Cash | Date | Cash after ordering |
 |---------|---------|------------------------------------|--------|--|
 | Willem  | - Chateau briand <br> - Tomatensoep | 20.00  | 4-6-2022 | 15.00 |
 | Myrthe  | - Tomatensoep  | 10.00  | 4-6-2022 | 8.00 |
 | Michel  | - Pavlova <br> | 10.00  | 4-6-2022 | 8.00 |
 ### Assignment
-|Revenue total |Revenue day specific |Biggest consumer | Appetizer customers | Customers that ordered above average | 
-|-|-|-|-|-|
-**9** : `input : button` | **9** : `input : 4-6-2022`  | **Willem** `input : button`| **Myrthe** `input : button` | **Willem** `input : button` |  
+| Revenue total | Revenue day specific | Biggest consumer | Appetizer customers | Customers that ordered above average | 
+|---------------|----------------------|------------------|---------------------|--------------------------------------|
+**9** : `input : button` | **9** : `input : 4-6-2022` | **Willem** `input : button` | **Myrthe** `input : button` | **Willem** `input : button` |  
