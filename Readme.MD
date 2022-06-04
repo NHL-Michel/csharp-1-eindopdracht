@@ -29,7 +29,7 @@ In the tables below all the input (that the user has to input in order to make t
 |Case|Type|Conditions|function/method | additional info|
 |-----|----|----------|----------------|----------------|
 |String name|`String`|not empty| constructor, setter| name of a dish |
-|List<Assignment> assignments |`List\<Assignement\>`| - | setter| Assigntments a catering company has |
+|List<Assignment> assignments |`List<Assignement>`| - | setter| Assigntments a catering company has |
   
 ##### Assignment
 |Case|Type|Conditions|function/method | additional info|
@@ -37,8 +37,8 @@ In the tables below all the input (that the user has to input in order to make t
 |String name|`String`|not empty| constructor, setter | name of the catering company |
 |DateTime startDate|`DateTime`| full date, including year, month, day and time.| constructor, setter| day the catering company starts taking care of their customers which are related to a company |
 |DateTime endDate|`DateTime`|full date, including year, month, day and time.| constructor, setter | day the catering company stops taking care of their customers which are related to a company |
-|List\<Customer\> customers|`List<Customer>`|-| setter | all customers who have pruchased an appetizer, main course or dessert at the catering company |
-|List\<Dish\> availableDishes|`List<Dish>`|-| setter | all dishes that the catering company has available for selling. |
+|List<Customer> customers|`List<Customer>`|-| setter | all customers who have pruchased an appetizer, main course or dessert at the catering company |
+|List<Dish> availableDishes|`List<Dish>`|-| setter | all dishes that the catering company has available for selling. |
 
 ##### Dish
 |Case|Type|Conditions|function/method | additional info|
@@ -54,7 +54,7 @@ In the tables below all the input (that the user has to input in order to make t
 |----|----|----------|----------------|----------------|
 |String name|`String`|not empty| constructor, setter | name of a customer |
 |float wallet|`float`|-| constructor, setter | the amount of money a customer has in his/her wallet |
-|List\<Dish\> orderedDishes|`List<Dish>`|-| setter | a list of all the dishes that a customer has consumed from the catering company |
+|List<Dish> orderedDishes|`List<Dish>`|-| setter | a list of all the dishes that a customer has consumed from the catering company |
 
 
 #### Output
@@ -62,7 +62,7 @@ In the tables below all the input (that the user has to input in order to make t
 |Case|Type|function/method|
 |----|----|---------------|
 |Get the name of a catering company|`String`|Name()|
-|Get the list of assigntments a cateringCompany has |`List\<Assigment\>`|Assignments()|
+|Get the list of assigntments a cateringCompany has |`List<Assigment>`|Assignments()|
   
 ##### Assignment
 |Case|Type|function/method|
