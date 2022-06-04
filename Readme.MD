@@ -24,6 +24,22 @@ In this section the in- and output of the application will be described.
 
 #### Input
 In the tables below all the input (that the user has to input in order to make the application work) are described.
+
+##### CateringCompany
+|Case|Type|Conditions|function/method | additional info|
+|-----|----|----------|----------------|----------------|
+|String name|`String`|not empty| constructor, setter| name of a dish |
+|List<Assignment> assignments |`List\<Assignement\>`| - | setter| Assigntments a catering company has |
+  
+##### Assignment
+|Case|Type|Conditions|function/method | additional info|
+|----|----|----------|----------------|----------------|
+|String name|`String`|not empty| constructor, setter | name of the catering company |
+|DateTime startDate|`DateTime`| full date, including year, month, day and time.| constructor, setter| day the catering company starts taking care of their customers which are related to a company |
+|DateTime endDate|`DateTime`|full date, including year, month, day and time.| constructor, setter | day the catering company stops taking care of their customers which are related to a company |
+|List\<Customer\> customers|`List<Customer>`|-| setter | all customers who have pruchased an appetizer, main course or dessert at the catering company |
+|List\<Dish\> availableDishes|`List<Dish>`|-| setter | all dishes that the catering company has available for selling. |
+
 ##### Dish
 |Case|Type|Conditions|function/method | additional info|
 |-----|----|----------|----------------|----------------|
@@ -32,16 +48,6 @@ In the tables below all the input (that the user has to input in order to make t
 |boolean appetizer|`boolean`| true or false | constructor, setter | specifies if the dish is an appetizer. If true, mainCourse and dessert must be false |
 |boolean mainCourse|`boolean`| true or false | constructor, setter | specifies if the dish is a maincourse. If true, appetizer and dessert must be false |
 |boolean dessert |`boolean`| true or false | constructor, setter| specifies if the dish is a dessert. If true, maincourse and appetizer must be false |
-|DateTime dateSold |`DateTime`| - | setter| date the dish was sold to a customer |
-
-##### CateringCompany
-|Case|Type|Conditions|function/method | additional info|
-|----|----|----------|----------------|----------------|
-|String name|`String`|not empty| constructor, setter | name of the catering company |
-|DateTime startDate|`DateTime`| full date, including year, month, day and time.| constructor, setter| day the catering company starts taking care of their customers which are related to a company |
-|DateTime name|`DateTime`|full date, including year, month, day and time.| constructor, setter | day the catering company stops taking care of their customers which are related to a company |
-|List\<Customer\> customers|`List<Customer>`|-| setter | all customers who have pruchased an appetizer, main course or dessert at the catering company |
-|List\<Dish\> dishes|`List<Dish>`|-| setter | all dishes that the catering company has available for selling. |
 
 ##### Customer
 |Case|Type|Conditions|function/method | additional info|
@@ -52,17 +58,13 @@ In the tables below all the input (that the user has to input in order to make t
 
 
 #### Output
-##### Dish
+##### CateringCompany
 |Case|Type|function/method|
 |----|----|---------------|
-|Get the price of a dish |`float`|Price()|
-|Get the name of a dish|`String`|Name()|
-|Get the date the dish was sold to a customer|`DateTime`|DateSold()|
-|Get the result if the dish is a appetizer |`Boolean`|Appetizer()|
-|Get the result if the dish is a maincourse|`Boolean`|MainCourse()|
-|Get the result if the dish is a dessert |`Boolean`|Dessert()|
-
-##### CateringCompany
+|Get the name of a catering company|`String`|Name()|
+|Get the list of assigntments a cateringCompany has |`List\<Assigment\>`|Assignments()|
+  
+##### Assignment
 |Case|Type|function/method|
 |----|----|---------------|
 |Get the name of the catering company |`String`|Name()|
@@ -75,13 +77,23 @@ In the tables below all the input (that the user has to input in order to make t
 |Retrieve the biggest consumer in customer terms |`Customer`|getBiggestConsumer()|
 |Get all customers that have had appetizers, but no desserts |`List<Customer>`|getAppetizerCustomer()|
 |Get all the customers that have spend money on dishes which is above average |`List<Customer>`|getAboveAverageCustomers()|
+|Once a customer orders a dish, sell that dish to the customer |`Dish`|sellDish()|
+  
+##### Dish
+|Case|Type|function/method|
+|----|----|---------------|
+|Get the price of a dish |`float`|Price()|
+|Get the name of a dish|`String`|Name()|
+|Get the result if the dish is a appetizer |`Boolean`|Appetizer()|
+|Get the result if the dish is a maincourse|`Boolean`|MainCourse()|
+|Get the result if the dish is a dessert |`Boolean`|Dessert()|
 
 ##### Customer
 |Case|Type|function/method|
 |----|----|---------------|
 |Get the name of a customer |`String`|Name()|
 |Get the amount of money a customer has in his wallet |`float`|Wallet()|
-|Retrieve all dishes that a specific customer has ordered|`List<Dish>`|OrderedDishes()|
+|Retrieve all dishes that a specific customer has ordered for a specific date|`List<Dish>`|OrderedDishes()|
 |Order a dish as a customer |`Dish`|orderDish()|
 ## Class Diagram
 
