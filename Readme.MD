@@ -53,7 +53,6 @@ In the tables below all the input (that the user has to input in order to make t
 |Case|Type|Conditions|function/method | additional info|
 |----|----|----------|----------------|----------------|
 |String name|`String`|not empty| constructor, setter | name of a customer |
-|float wallet|`float`|-| constructor, setter | the amount of money a customer has in his/her wallet |
 |List<Dish> orderedDishes|`List<Dish>`|-| setter | a list of all the dishes that a customer has consumed from the catering company |
 
 
@@ -92,7 +91,6 @@ In the tables below all the input (that the user has to input in order to make t
 |Case|Type|function/method|
 |----|----|---------------|
 |Get the name of a customer |`String`|Name()|
-|Get the amount of money a customer has in his wallet |`float`|Wallet()|
 |Retrieve all dishes that a specific customer has ordered for a specific date|`List<Dish>`|OrderedDishes()|
 |Order a dish as a customer |`Dish`|orderDish()|
 ## Class Diagram
