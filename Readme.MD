@@ -100,11 +100,11 @@ In the tables below all the input (that the user has to input in order to make t
 ## Testplan
 ### Customer 
 #### Ordering a dish
-| Customer | Dish name| Date | Cash after ordering |
+| Customer | Dish name| Date | price |
 |---------|---------|--------|--|
-| Willem  | - Chateau briand <br> - Tomatensoep | 4-6-2022 | 15.00 |
-| Myrthe  | - Tomatensoep  | 4-6-2022 | 8.00 |
-| Michel  | - Pavlova <br> | 4-6-2022 | 8.00 |
+| Willem  | - Chateau briand <br> - Tomatensoep | 4-6-2022 | 5.00 |
+| Myrthe  | - Tomatensoep  | 4-6-2022 | 2.00 |
+| Michel  | - Pavlova <br> | 4-6-2022 | 2.00 |
 ### Assignment
 | Revenue total | Revenue day specific | Biggest consumer | Appetizer customers | Customers that ordered above average | 
 |---------------|----------------------|------------------|---------------------|--------------------------------------|
