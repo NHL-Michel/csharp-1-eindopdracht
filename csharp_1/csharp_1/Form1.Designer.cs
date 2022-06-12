@@ -185,6 +185,7 @@ namespace csharp_1
             this.button5.TabIndex = 5;
             this.button5.Text = "Show";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.showAboveAverageCustomers);
             // 
             // label6
             // 
@@ -203,6 +204,7 @@ namespace csharp_1
             this.button4.TabIndex = 3;
             this.button4.Text = "Show";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.showAppetizerCustomers);
             // 
             // button3
             // 
@@ -212,6 +214,7 @@ namespace csharp_1
             this.button3.TabIndex = 2;
             this.button3.Text = "Show";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.showBiggestConsumer);
             // 
             // label5
             // 

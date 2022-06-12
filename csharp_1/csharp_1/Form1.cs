@@ -18,8 +18,8 @@ namespace csharp_1
     {
         Database db;
         MySql.Data.MySqlClient.MySqlConnection conn;
-        List<List<String>> dbCustomers; // all customers related to an assignment
-        List<List<String>> dbDishes; // all dishes related to an assignment
+        List<List<String>> dbCustomers; // all customers related to an assignment (in this case assignment 10)
+        List<List<String>> dbDishes; // all dishes related to an assignment (in this case assignment 10)
 
         public Form1()
         {
@@ -54,6 +54,7 @@ namespace csharp_1
                                             "where assignment.id = 10", new List<String> { "id", "price", "name", "appetizer", "maincourse", "dessert" });
             conn.Close();
             initTabOne();
+            initTabTwo();
         }
 
         // splashScreen
@@ -145,6 +146,7 @@ namespace csharp_1
             //new Data();
         }
 
+        // order a dish (tab 1)
         private void orderDish(object sender, EventArgs e)
         {
             String dishId = this.comboBox2.Text.Split('.')[0];
@@ -152,8 +154,8 @@ namespace csharp_1
             if (!string.IsNullOrEmpty(dishId) && !string.IsNullOrEmpty(customerId))
             {
                 conn.Open();
-                db.executeQuery("INSERT INTO orderr (assignment_id, customer_id, dish_id, order_date) " +
-                                "VALUES (@assignment_id, @customer_id, @dish_id, @order_date )", new Dictionary<String, String>()
+                db.executeQuery(@"INSERT INTO orderr (assignment_id, customer_id, dish_id, order_date)
+                                VALUES (@assignment_id, @customer_id, @dish_id, @order_date )", new Dictionary<String, String>()
                                 {
                                     ["assignment_id"] = "10",
                                     ["customer_id"] = $"{customerId}",
@@ -166,6 +168,67 @@ namespace csharp_1
             {
                 MessageBox.Show("Please fill both boxes with a value from the dropdown menu!");
             }
+        }
+
+
+        private void showBiggestConsumer(object sender, EventArgs e)
+        {
+            conn.Open();
+            List<List<String>> data = db.selectQuery(@"SELECT customer.name, COUNT(customer_id) as dishes
+                                                         FROM orderr
+                                                         INNER JOIN customer
+                                                         ON orderr.customer_id = customer.id
+                                                         GROUP BY orderr.customer_id
+                                                         ORDER BY dishes desc
+                                                         LIMIT 1", new List<String> { "name", "dishes" });
+            this.label7.Text = $"The biggest consumer is {data[0][0]} with {data[0][1]} dishes";
+            conn.Close();
+        }
+
+        private void showAppetizerCustomers(object sender, EventArgs e)
+        {
+            conn.Open();
+            List<List<String>> data = db.selectQuery(@"SELECT customer.name, MAX(dish.appetizer) as appetizer , MAX(dish.dessert) as dessert
+                                                        FROM customer
+                                                        INNER JOIN orderr
+                                                        ON customer.id = orderr.customer_id
+                                                        INNER JOIN dish
+                                                        ON orderr.dish_id = dish.id
+                                                        GROUP BY customer.name
+                                                        HAVING dessert = 0; ", new List<String> { "name", "appetizer", "dessert" });
+            this.label7.Text = "";
+            foreach (List<String> record in data)
+            {
+                this.label7.Text += $"Customer {record[0]} has had appetizers, but no desserts";
+            }
+            conn.Close();
+        }
+
+        private void showAboveAverageCustomers(object sender, EventArgs e)
+        {
+            conn.Open();
+            List<List<String>> data = db.selectQuery(@"SELECT customer.name, avg(dish.price) custAverage
+                                                        FROM customer 
+                                                        INNER JOIN orderr 
+                                                        ON customer.id = orderr.customer_id 
+                                                        INNER JOIN dish
+                                                        ON orderr.dish_id = dish.id 
+                                                        GROUP BY customer.name 
+                                                        HAVING custAverage
+                                                        >
+                                                        (SELECT avg(dish.price)
+                                                            FROM customer
+                                                            INNER JOIN orderr
+                                                            ON customer.id = orderr.customer_id
+                                                            INNER JOIN dish
+                                                            ON orderr.dish_id = dish.id)", new List<String> { "name", "custaverage" });
+
+            this.label7.Text = "";
+            foreach (List<String> record in data)
+            {
+                this.label7.Text += $"Customer {record[0]} has spend above average \n";
+            }
+            conn.Close();
         }
     }
 }
