@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // local imports
@@ -20,7 +14,7 @@ namespace csharp_1
         MySql.Data.MySqlClient.MySqlConnection conn;
         List<List<String>> dbCustomers; // all customers related to an assignment (in this case assignment 10)
         List<List<String>> dbDishes; // all dishes related to an assignment (in this case assignment 10)
-
+        List<List<String>> dbDates; //
         public Form1()
         {
             // -- start splashscreen
@@ -53,8 +47,17 @@ namespace csharp_1
                                             "ON dish_assignment.assignment_id = assignment.id " +
                                             "where assignment.id = 10", new List<String> { "id", "price", "name", "appetizer", "maincourse", "dessert" });
             conn.Close();
+            conn.Open();
+            this.dbDates = db.selectQuery(@"SELECT DISTINCT order_date
+                                             FROM orderr
+                                             ORDER BY order_date DESC", new List<String> { "order_date"});
+
+            conn.Close();
+            // set the comboBoxes on tab one
             initTabOne();
-            initTabTwo();
+            // tab two requires no initialization by a seperate script.
+            // set three comboBox on tab three
+            initTabThree();
         }
 
         // splashScreen
@@ -92,14 +95,14 @@ namespace csharp_1
             }
         }
 
-        public void initTabTwo() 
-        { 
-        
-        }
-
         public void initTabThree() 
-        { 
-        
+        {
+            foreach (List<String> date in this.dbDates)
+            {
+                String[] unsortedDate = date[0].Split(' ')[0].Split('-');
+                String sortedDate = $"{unsortedDate[2]}-{unsortedDate[1]}-{unsortedDate[0]}";
+                comboBox1.Items.Add($"{sortedDate}");
+            }
         }
 
         // ---- start context menu ----- //
@@ -146,7 +149,7 @@ namespace csharp_1
             //new Data();
         }
 
-        // order a dish (tab 1)
+        // order a dish (tab 1) - als in bestellen van een gerecht, niet sorteren
         private void orderDish(object sender, EventArgs e)
         {
             String dishId = this.comboBox2.Text.Split('.')[0];
@@ -170,21 +173,22 @@ namespace csharp_1
             }
         }
 
-
+        // show the biggest consumer (tab 2)
         private void showBiggestConsumer(object sender, EventArgs e)
         {
             conn.Open();
             List<List<String>> data = db.selectQuery(@"SELECT customer.name, COUNT(customer_id) as dishes
-                                                         FROM orderr
-                                                         INNER JOIN customer
-                                                         ON orderr.customer_id = customer.id
-                                                         GROUP BY orderr.customer_id
-                                                         ORDER BY dishes desc
-                                                         LIMIT 1", new List<String> { "name", "dishes" });
+                                                        FROM orderr
+                                                        INNER JOIN customer
+                                                        ON orderr.customer_id = customer.id
+                                                        GROUP BY orderr.customer_id
+                                                        ORDER BY dishes desc
+                                                        LIMIT 1", new List<String> { "name", "dishes" });
             this.label7.Text = $"The biggest consumer is {data[0][0]} with {data[0][1]} dishes";
             conn.Close();
         }
 
+        // show all customers that have had an appetizer, but no dessert (tab 2)
         private void showAppetizerCustomers(object sender, EventArgs e)
         {
             conn.Open();
@@ -204,6 +208,7 @@ namespace csharp_1
             conn.Close();
         }
 
+        // show all customers that have spend above the average (tab 2)
         private void showAboveAverageCustomers(object sender, EventArgs e)
         {
             conn.Open();
@@ -226,9 +231,42 @@ namespace csharp_1
             this.label7.Text = "";
             foreach (List<String> record in data)
             {
-                this.label7.Text += $"Customer {record[0]} has spend above average \n";
+                this.label7.Text += $"Customer {record[0]} has spend above average with a \nspend value of ${record[1]}\n\n";
             }
             conn.Close();
+        }
+
+        // calculate the total revenue made (tab 3)
+        private void calculateTotalRevenue(object sender, EventArgs e)
+        {
+            conn.Open();
+            List<List<String>> data = db.selectQuery(@"SELECT SUM(dish.price) as revenue
+                                                        FROM dish 
+                                                        INNER JOIN orderr 
+                                                        ON orderr.dish_id = dish.id", new List<String> { "revenue" });
+            conn.Close();
+            this.label3.Text = $"The total revenue is ${data[0][0]}";
+        }
+
+        private void calculateAverageRevenueByDate(object sender, EventArgs e)
+        {
+            String date = comboBox1.Text;
+
+            if (!string.IsNullOrEmpty(date))
+            {
+                conn.Open();
+                List<List<String>> data = db.selectQuery($@"SELECT AVG(dish.price) as averageRevenue 
+                                                        FROM dish
+                                                        INNER JOIN orderr
+                                                        ON orderr.dish_id = dish.id
+                                                        GROUP BY order_date
+                                                        HAVING orderr.order_date = '{date}'", new List<String> {"averageRevenue" });
+                conn.Close();
+                this.label3.Text = $"The average revenue made on {date} is \n${data[0][0]}";
+            } else
+            {
+                MessageBox.Show("Please pick a legitimate date!");
+            }
         }
     }
 }
