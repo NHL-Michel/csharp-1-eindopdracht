@@ -65,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="resources\classes\Assignment.cs" />
     <Compile Include="resources\classes\CateringCompany.cs" />
+    <Compile Include="resources\classes\Data.cs" />
     <Compile Include="resources\classes\Dish.cs" />
     <Compile Include="resources\classes\Customer.cs" />
     <Compile Include="resources\classes\Database.cs" />

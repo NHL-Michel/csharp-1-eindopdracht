@@ -48,13 +48,13 @@ namespace csharp_1.resources.classes
             return true;
         }
 
-        public List<List<String>> selectQuery(String query, MySql.Data.MySqlClient.MySqlConnection conn)
+        public List<List<String>> selectQuery(String query,  List<String> fields)
         {
             List<List<String>> records = new List<List<String>>();
             try
             {
                 // instantiate the command and add the query to the command class
-                MySql.Data.MySqlClient.MySqlCommand command = conn.CreateCommand();
+                MySql.Data.MySqlClient.MySqlCommand command = this.conn.CreateCommand();
                 command.CommandText = query;
 
                 // execute the reader (retrieve results)
@@ -64,11 +64,10 @@ namespace csharp_1.resources.classes
                 while (reader.Read())
                 {
                     List<String> tempList = new List<String>();
-                    tempList.Add(reader["id"].ToString());
-                    tempList.Add(reader["naam"].ToString());
-                    tempList.Add(reader["kwaliteit"].ToString());
-                    tempList.Add(reader["beschrijving"].ToString());
-                    tempList.Add(reader["bedrag"].ToString());
+                    foreach (String element in fields)
+                    {
+                        tempList.Add(reader[element].ToString());
+                    }
                     records.Add(tempList);
                 }
                 return records;
@@ -80,10 +79,10 @@ namespace csharp_1.resources.classes
             }
         }
 
-        public Boolean executeQuery(String query, MySql.Data.MySqlClient.MySqlConnection conn, Dictionary<String, String> parameters)
+        public Boolean executeQuery(String query, Dictionary<String, String> parameters)
         {
             // instantiate the command object and add a query
-            MySql.Data.MySqlClient.MySqlCommand command = conn.CreateCommand();
+            MySql.Data.MySqlClient.MySqlCommand command = this.conn.CreateCommand();
             command.CommandText = query;
 
             // temporary save all keys from the parameters parameter
