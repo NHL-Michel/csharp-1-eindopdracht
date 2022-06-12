@@ -1,0 +1,13 @@
+﻿Installing assembly 'C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.InstallLog
+   assemblypath = C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe assembly.
+Committing assembly 'C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.InstallLog
+   assemblypath = C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe assembly.
+Remove InstallState file because there are no installers.
