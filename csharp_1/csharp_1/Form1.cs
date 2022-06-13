@@ -134,7 +134,7 @@ namespace csharp_1
         // opens the app once it is minimized
         private void openMinimizedApp(object sender, EventArgs e)
         {
-            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
 
         // closes the entire application. Including the aboutBox, if it is open.
@@ -267,6 +267,11 @@ namespace csharp_1
             {
                 MessageBox.Show("Please pick a legitimate date!");
             }
+        }
+
+        private void clickNotifyIcon(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }
