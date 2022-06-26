@@ -1,0 +1,15 @@
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.csproj.AssemblyReference.cache
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.Form1.resources
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.Properties.Resources.resources
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.splashScreen.resources
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.csproj.GenerateResource.cache
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.csproj.CoreCompileInputs.cache
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe.config
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.exe
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\csharp_1.pdb
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.exe
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.pdb
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\MySql.Data.dll
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.csproj.CopyComplete
+C:\Users\miche\source\repos\csharp-1-eindopdracht\csharp_1\csharp_1\obj\Debug\csharp_1.AboutBox.resources
